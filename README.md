@@ -1,2 +1,2 @@
-# which_is_the_biggest_number_among_3_given_numbers_program
+# searching_the_largest_number_among_3_values_program
 Homework#4
