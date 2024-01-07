@@ -9,12 +9,16 @@
 # Deadline: BEFORE JAN 13, 2024!!!
 
 import tkinter
-from tkinter import Button
+from tkinter import Button, messagebox
 
 # Pseudo Code
 
 # Proceeds into searching for the biggest number among the 3 given values by the user
 def open():
+    if any (blank == "" for blank in (first_number_entry.get(), second_number_entry.get(), third_number_entry.get())):
+        messagebox.showerror(title="Error", message="Please fill out the blanks")
+        return
+
     first_num = float(first_number_entry.get())
     second_num = float(second_number_entry.get())
     third_num = float(third_number_entry.get())
@@ -30,12 +34,12 @@ def open():
     # Adding a results frame
     results_frame = tkinter.Frame(next_tab)
     results_frame.pack(expand=True, fill="both", padx=10, pady=10)
-    results_frame_label = tkinter.Label(next_tab, text="Results:", font=('Figtree', 20, 'bold'))
+    results_frame_label = tkinter.Label(next_tab, text="Results:", font=('Figtree', 30, 'bold'))
     results_frame_label.place(relx=0.5, rely=0.12, anchor= "center")
 
     # Title text for the biggest number
-    biggest_num_text = tkinter.Label(results_frame, text="The biggest number is:", font=('Figtree', 15, 'bold'))
-    biggest_num_text.place(relx=0.5, rely=0.3, anchor= "center")
+    biggest_num_text = tkinter.Label(results_frame, text="The biggest number is:", font=('Figtree', 18, 'bold'))
+    biggest_num_text.place(relx=0.5, rely=0.36, anchor= "center")
 
     # Adding an exit button
     exit_button = Button(next_tab, text="Done", command=exit, font=('Figtree', 15, 'bold'))
@@ -52,8 +56,8 @@ def open():
         
     # Finding out what is the biggest number among the 3
     biggest_num = which_one(first_num, second_num, third_num)
-    biggest_number = tkinter.Label(next_tab, text= biggest_num)
-    biggest_number.place(relx=0.5, rely=0.4, anchor= "center")
+    biggest_number_results = tkinter.Label(next_tab, text= biggest_num, font=('Figtree', 30, 'bold'))
+    biggest_number_results.place(relx=0.5, rely=0.575, anchor= "center")
 
 
 # Creating the main tab
