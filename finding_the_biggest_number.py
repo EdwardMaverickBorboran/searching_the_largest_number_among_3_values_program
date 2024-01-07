@@ -15,13 +15,17 @@ from tkinter import Button, messagebox
 
 # Proceeds into searching for the biggest number among the 3 given values by the user
 def open():
-    if any (blank == "" for blank in (first_number_entry.get(), second_number_entry.get(), third_number_entry.get())):
-        messagebox.showerror(title="Error", message="Please fill out the blanks")
+    if any (blank == "" for blank in (first_digit_entry.get(), second_digit_entry.get(), third_digit_entry.get())):
+        messagebox.showerror(title="Error", message="Please fill out the blanks.")
         return
-
-    first_num = float(first_number_entry.get())
-    second_num = float(second_number_entry.get())
-    third_num = float(third_number_entry.get())
+    
+    first_digit = first_digit_entry.get()
+    second_digit = second_digit_entry.get()
+    third_digit = third_digit_entry.get()
+    
+    if (first_digit_entry.get() and second_digit_entry.get() and third_digit_entry.get()).isalpha():
+        messagebox.showwarning(title= "Invalid", message="Please enter using NUMBERS ONLY.")
+        return
 
     # Destroy Main Tab
     main_tab.destroy()
@@ -46,16 +50,16 @@ def open():
     exit_button.place(relx=0.5, rely=0.86, anchor="center")
 
     # Getting the numbers
-    def which_one(first_num, second_num, third_num):
-        if (first_num >= second_num) and (first_num >= third_num):
-            return first_num
-        elif (second_num >= first_num) and (second_num >= third_num):
-            return second_num
+    def all(first_digit, second_digit, third_digit):
+        if (first_digit >= second_digit) and (first_digit >= third_digit):
+            biggest_num = first_digit
+        elif (second_digit >= first_digit) and (second_digit >= third_digit):
+            biggest_num = second_digit
         else:
-            return third_num
+            biggest_num = third_digit
         
     # Finding out what is the biggest number among the 3
-    biggest_num = which_one(first_num, second_num, third_num)
+    biggest_num = all(first_digit, second_digit, third_digit)
     biggest_number_results = tkinter.Label(next_tab, text= biggest_num, font=('Figtree', 30, 'bold'))
     biggest_number_results.place(relx=0.5, rely=0.575, anchor= "center")
 
@@ -72,14 +76,14 @@ main_frame_label = tkinter.Label(main_tab, text="Finding the Biggest Number", fo
 main_frame_label.place(relx=0.5, rely=0.15, anchor= "center")
 
 # Adding entry widgets
-first_number_entry = tkinter.Entry(main_tab)
-first_number_entry.place(relx=0.5, rely=0.33, anchor="center")
+first_digit_entry = tkinter.Entry(main_frame)
+first_digit_entry.place(relx=0.5, rely=0.33, anchor="center")
 
-second_number_entry = tkinter.Entry(main_tab)
-second_number_entry.place(relx=0.5, rely=0.48, anchor="center")
+second_digit_entry = tkinter.Entry(main_frame)
+second_digit_entry.place(relx=0.5, rely=0.48, anchor="center")
 
-third_number_entry = tkinter.Entry(main_tab)
-third_number_entry.place(relx=0.5, rely=0.63, anchor="center")
+third_digit_entry = tkinter.Entry(main_frame)
+third_digit_entry.place(relx=0.5, rely=0.63, anchor="center")
 
 # Adding buttons to proceed and cancel
 proceed_button = Button(main_tab, text="Proceed", command=open, font=('Figtree', 12, 'bold'))
