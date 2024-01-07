@@ -9,15 +9,15 @@
 # Deadline: BEFORE JAN 13, 2024!!!
 
 import tkinter
-from tkinter import Button, messagebox
+from tkinter import Button
 
 # Pseudo Code
 
 # Proceeds into searching for the biggest number among the 3 given values by the user
 def open():
-    first_num = first_number_entry.get()
-    second_num = second_number_entry.get()
-    third_num = third_number_entry.get()
+    first_num = float(first_number_entry.get())
+    second_num = float(second_number_entry.get())
+    third_num = float(third_number_entry.get())
 
     # Destroy Main Tab
     main_tab.destroy()
@@ -28,13 +28,13 @@ def open():
     next_tab.geometry ("500x350")
 
     # Adding a results frame
-    results_Frame = tkinter.Frame(next_tab)
-    results_Frame.pack(expand=True, fill="both", padx=10, pady=10)
+    results_frame = tkinter.Frame(next_tab)
+    results_frame.pack(expand=True, fill="both", padx=10, pady=10)
     results_frame_label = tkinter.Label(next_tab, text="Results:", font=('Figtree', 20, 'bold'))
     results_frame_label.place(relx=0.5, rely=0.12, anchor= "center")
 
     # Title text for the biggest number
-    biggest_num_text = tkinter.Label(results_Frame, text="The biggest number is:", font=('Figtree', 15, 'bold'))
+    biggest_num_text = tkinter.Label(results_frame, text="The biggest number is:", font=('Figtree', 15, 'bold'))
     biggest_num_text.place(relx=0.5, rely=0.3, anchor= "center")
 
     # Adding an exit button
@@ -42,12 +42,10 @@ def open():
     exit_button.place(relx=0.5, rely=0.86, anchor="center")
 
     # Getting the numbers
-
     def which_one(first_num, second_num, third_num):
-
-        if (first_num > second_num) and (first_num > third_num):
+        if (first_num >= second_num) and (first_num >= third_num):
             return first_num
-        elif (second_num > first_num) and (second_num > third_num):
+        elif (second_num >= first_num) and (second_num >= third_num):
             return second_num
         else:
             return third_num
