@@ -15,49 +15,54 @@ from tkinter import Button, messagebox
 
 # Proceeds into searching for the biggest number among the 3 given values by the user
 def open():
-    if any (blank == "" for blank in (first_digit_entry.get(), second_digit_entry.get(), third_digit_entry.get())):
-        messagebox.showerror(title="Error", message="Please fill out the blanks.")
-        return
+    #Validation for the numbers
+    if input_first_digit.get() and input_second_digit.get() and input_third_digit.get():
 
-    first_digit = float(first_digit_entry.get())
-    second_digit = float(second_digit_entry.get())
-    third_digit = float(third_digit_entry.get())
+        all_number = (input_first_digit.get() + input_second_digit.get() + input_third_digit.get())
+        if all_number.isdigit():
 
-    # Destroy Main Tab
-    main_tab.destroy()
+            first_digit = float(input_first_digit.get())
+            second_digit = float(input_second_digit.get())
+            third_digit = float(input_third_digit.get())
 
-    # Creating 2nd Tab
-    next_tab = tkinter.Tk()
-    next_tab.title ("Input the Numbers")
-    next_tab.geometry ("500x350")
+            # Destroy Main Tab
+            main_tab.destroy() 
 
-    # Adding a results frame
-    results_frame = tkinter.Frame(next_tab)
-    results_frame.pack(expand=True, fill="both", padx=10, pady=10)
-    results_frame_label = tkinter.Label(next_tab, text="Results:", font=('Figtree', 30, 'bold'))
-    results_frame_label.grid(padx=0.5, pady=0.12, anchor= "center")
+            # Creating 2nd Tab
+            next_tab = tkinter.Tk()
+            next_tab.title ("Input the Numbers")
+            next_tab.geometry ("500x350")
 
-    # Title text for the biggest number
-    biggest_num_text = tkinter.Label(results_frame, text="The biggest number is:", font=('Figtree', 18, 'bold'))
-    biggest_num_text.grid(padx=0.5, pady=0.36, anchor= "center")
+            # Adding a results frame
+            results_frame = tkinter.Frame(next_tab)
+            results_frame.pack(expand=True, fill="both", padx=10, pady=10)
+            results_frame_label = tkinter.Label(next_tab, text="Results:", font=('Figtree', 30, 'bold'))
+            results_frame_label.place(relx=0.5, rely=0.14, anchor= "center")
 
-    # Adding an exit button
-    exit_button = Button(next_tab, text="Done", command=exit, font=('Figtree', 15, 'bold'))
-    exit_button.grid(padx=0.5, pady=0.86, anchor="center")
+            # Title text for the biggest number
+            biggest_num_text = tkinter.Label(results_frame, text="The biggest number is:", font=('Figtree', 18, 'bold'))
+            biggest_num_text.place(relx=0.5, rely=0.36, anchor= "center")
 
-    # Getting the numbers
-    def all(first_digit, second_digit, third_digit):
-        if (first_digit >= second_digit) and (first_digit >= third_digit):
-            return first_digit
-        elif (second_digit >= first_digit) and (second_digit >= third_digit):
-            return second_digit
+            # Adding an exit button
+            exit_button = Button(next_tab, text="Done", command=exit, font=('Figtree', 15, 'bold'))
+            exit_button.place(relx=0.5, rely=0.86, anchor="center")
+
+            # Main funtion in finding the biggest number
+            if (first_digit >= second_digit) and (first_digit >= third_digit):
+                biggest = first_digit
+            elif (second_digit >= first_digit) and (second_digit >= third_digit):
+                biggest = second_digit
+            else:
+                biggest = third_digit
+
+            # Finding out what is the biggest number among the 3
+            biggest_number_results = tkinter.Label(next_tab, text= biggest, font=('Figtree', 30, 'bold'))
+            biggest_number_results.place(relx=0.5, rely=0.575, anchor= "center")
+
         else:
-            return third_digit
-        
-    # Finding out what is the biggest number among the 3
-    biggest_num = all(first_digit, second_digit, third_digit)
-    biggest_number_results = tkinter.Label(next_tab, text= biggest_num, font=('Figtree', 30, 'bold'))
-    biggest_number_results.grid(padx=0.5, pady=0.575, anchor= "center")
+            messagebox.showerror(title="Invalid", message="Please input numbers only.")  
+    else:
+        messagebox.showerror(title="Error", message="Please fill out the blanks.")  
 
 
 # Creating the main tab
@@ -69,24 +74,24 @@ main_tab.geometry ("350x300")
 main_frame = tkinter.Frame(main_tab)
 main_frame.pack(expand=True, fill="both", padx=10, pady=10)
 main_frame_label = tkinter.Label(main_tab, text="Finding the Biggest Number", font=('Figtree', 16, 'bold'))
-main_frame_label.grid(padx=0.5, pady=0.15, anchor= "center")
+main_frame_label.place(relx=0.5, rely=0.15, anchor= "center")
 
 # Adding entry widgets
-first_digit_entry = tkinter.Entry(main_frame)
-first_digit_entry.grid(padx=0.5, pady=0.33, anchor="center")
+input_first_digit = tkinter.Entry(main_frame)
+input_first_digit.place(relx=0.5, rely=0.33, anchor="center")
 
-second_digit_entry = tkinter.Entry(main_frame)
-second_digit_entry.grid(padx=0.5, pady=0.48, anchor="center")
+input_second_digit = tkinter.Entry(main_frame)
+input_second_digit.place(relx=0.5, rely=0.48, anchor="center")
 
-third_digit_entry = tkinter.Entry(main_frame)
-third_digit_entry.grid(padx=0.5, pady=0.63, anchor="center")
+input_third_digit = tkinter.Entry(main_frame)
+input_third_digit.place(relx=0.5, rely=0.63, anchor="center")
 
 # Adding buttons to proceed and cancel
 proceed_button = Button(main_tab, text="Proceed", command=open, font=('Figtree', 12, 'bold'))
-proceed_button.grid(padx=0.35, pady=0.83, anchor="center")
+proceed_button.place(relx=0.35, rely=0.83, anchor="center")
 
 cancel_button = Button(main_tab, text="Cancel", command=exit, font=('Figtree', 12, 'bold'))
-cancel_button.grid(padx=0.65, pady=0.83, anchor="center")
+cancel_button.place(relx=0.65, rely=0.83, anchor="center")
 
 # Can't resize the main tab
 main_tab.resizable (False, False)
