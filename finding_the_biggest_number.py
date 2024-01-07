@@ -21,47 +21,46 @@ def open():
     # Creating 2nd Tab
     Next_Tab = tkinter.Tk()
     Next_Tab.title ("Input the Numbers")
-    Next_Tab.geometry ("350x450")
+    Next_Tab.geometry ("500x350")
 
-    Input_Num_Frame = tkinter.Frame(Next_Tab)
-    Input_Num_Frame.pack(expand=True, fill="both", padx=10, pady=10)
-    Input_Num_Frame_Label = tkinter.Label(Next_Tab, text="Please enter 3 Numbers", font=('Figtree', 16, 'bold'))
-    Input_Num_Frame_Label.place(relx=0.5, rely=0.1, anchor= "center")
-
-
-    # Adding entry widgets
-    First_Number_Entry = tkinter.Entry(Next_Tab)
-    First_Number_Entry.place(relx=0.5, rely=0.2, anchor="center")
-
-    Second_Number_Entry = tkinter.Entry(Next_Tab)
-    Second_Number_Entry.place(relx=0.5, rely=0.3, anchor="center")
-
-    Third_Number_Entry = tkinter.Entry(Next_Tab)
-    Third_Number_Entry.place(relx=0.5, rely=0.4, anchor="center")
-
+    # Adding a results frame
     Results_Frame = tkinter.Frame(Next_Tab)
     Results_Frame.pack(expand=True, fill="both", padx=10, pady=10)
-    Results_Frame_Label = tkinter.Label(Next_Tab, text="Results:", font=('Figtree', 16, 'bold'))
-    Results_Frame_Label.place(relx=0.5, rely=0.58, anchor= "center")
+    Results_Frame_Label = tkinter.Label(Next_Tab, text="Results:", font=('Figtree', 20, 'bold'))
+    Results_Frame_Label.place(relx=0.5, rely=0.12, anchor= "center")
+
+    # Adding an exit button
+    Exit_Button = Button(Next_Tab, text="Done", command=exit, font=('Figtree', 15, 'bold'))
+    Exit_Button.place(relx=0.5, rely=0.87, anchor="center")
 
 
 # Creating the main tab
 Main_Tab = tkinter.Tk()
 Main_Tab.title ("Biggest Number?") 
-Main_Tab.geometry ("350x200")
+Main_Tab.geometry ("350x300")
 
 # Creating the frame for main tab
 Main_Frame = tkinter.Frame(Main_Tab)
 Main_Frame.pack(expand=True, fill="both", padx=10, pady=10)
-Main_Frame_Label = tkinter.Label(Main_Tab, text="Finding the biggest number", font=('Figtree', 16, 'bold'))
-Main_Frame_Label.place(relx=0.5, rely=0.3, anchor= "center")
+Main_Frame_Label = tkinter.Label(Main_Tab, text="Finding the Biggest Number", font=('Figtree', 16, 'bold'))
+Main_Frame_Label.place(relx=0.5, rely=0.15, anchor= "center")
+
+# Adding entry widgets
+First_Number_Entry = tkinter.Entry(Main_Tab)
+First_Number_Entry.place(relx=0.5, rely=0.33, anchor="center")
+
+Second_Number_Entry = tkinter.Entry(Main_Tab)
+Second_Number_Entry.place(relx=0.5, rely=0.48, anchor="center")
+
+Third_Number_Entry = tkinter.Entry(Main_Tab)
+Third_Number_Entry.place(relx=0.5, rely=0.63, anchor="center")
 
 # Adding buttons to proceed and cancel
 Proceed_Button = Button(Main_Tab, text="Proceed", command=open, font=('Figtree', 12, 'bold'))
-Proceed_Button.place(relx=0.35, rely=0.6, anchor="center")
+Proceed_Button.place(relx=0.35, rely=0.83, anchor="center")
 
 Cancel_Button = Button(Main_Tab, text="Cancel", command=exit, font=('Figtree', 12, 'bold'))
-Cancel_Button.place(relx=0.65, rely=0.6, anchor="center")
+Cancel_Button.place(relx=0.65, rely=0.83, anchor="center")
 
 # Can't resize the main tab
 Main_Tab.resizable (False, False)
