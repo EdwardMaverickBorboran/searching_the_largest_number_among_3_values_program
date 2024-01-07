@@ -29,9 +29,30 @@ def open():
     Results_Frame_Label = tkinter.Label(Next_Tab, text="Results:", font=('Figtree', 20, 'bold'))
     Results_Frame_Label.place(relx=0.5, rely=0.12, anchor= "center")
 
+    #Finding out what number is the biggest among the 3
+    Biggest_Num_Text = tkinter.Label(Results_Frame, text="The biggest number is:", font=('Figtree', 15, 'bold'))
+    Biggest_Num_Text.place(relx=0.5, rely=0.3, anchor= "center")
+
     # Adding an exit button
     Exit_Button = Button(Next_Tab, text="Done", command=exit, font=('Figtree', 15, 'bold'))
-    Exit_Button.place(relx=0.5, rely=0.87, anchor="center")
+    Exit_Button.place(relx=0.5, rely=0.86, anchor="center")
+
+    # Getting the numbers
+    First_Num = First_Number_Entry.get()
+    Second_Num = Second_Number_Entry.get()
+    Third_Num = Third_Number_Entry.get()
+
+    def Which_One(First_Num, Second_Num, Third_Num):
+        if (First_Num > Second_Num) and (First_Num > Third_Num):
+            return First_Num
+        elif (Second_Num > First_Num) and (Second_Num > Third_Num):
+            return Second_Num
+        else:
+            return Third_Num
+    
+    Biggest_Num = Which_One(First_Num, Second_Num, Third_Num)
+    Biggest_Num = tkinter.Label(Next_Tab)
+    Biggest_Num.place(relx=0.5, rely=0.4, anchor= "center")
 
 
 # Creating the main tab
