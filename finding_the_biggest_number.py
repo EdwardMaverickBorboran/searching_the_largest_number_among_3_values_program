@@ -73,7 +73,7 @@ main_tab.geometry ("350x380")
 # Creating the main frame for main tab
 main_frame = customtkinter.CTkFrame(main_tab, fg_color='gainsboro')
 main_frame.pack(expand=True, fill="both", padx=10, pady=10)
-main_frame_label = customtkinter.CTkLabel(main_frame, text="Let's find the biggest number!", font=('Calibri', 23, 'bold'))
+main_frame_label = customtkinter.CTkLabel(main_frame, text="Let's find the BIGGEST number!", font=('Calibri', 23, 'bold'))
 main_frame_label.place(relx=0.5, rely=0.135, anchor= "center")
 
 # Adding entry widgets and its placements
